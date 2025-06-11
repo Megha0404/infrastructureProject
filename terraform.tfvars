@@ -1,6 +1,6 @@
 location = "southindia"
 
-name_prefix = "finalProject"
+name_prefix = "finalProject12"
 
 
 #Docker

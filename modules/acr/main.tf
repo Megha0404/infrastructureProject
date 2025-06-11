@@ -1,17 +1,11 @@
-resource "random_string" "acr_suffix" {
-  length  = 5
-  special = false
-  upper   = false
-  
-}
-
 resource "azurerm_container_registry" "acr" {
-  name                = "${var.acr_name}${random_string.acr_suffix.result}"
+  name                = var.acr_name
   resource_group_name = var.rg_name
   location            = var.location
   sku                 = var.acr_sku
-  tags                = var.tags
-  admin_enabled = true
+  admin_enabled       = true
+
+  tags = var.tags
 }
 
 resource "azurerm_container_registry_task" "acr_task" {
