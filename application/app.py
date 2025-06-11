@@ -1,26 +1,12 @@
 from flask import Flask
-from redis import Redis, RedisError
-import os
-import socket
-
-# Connect to Redis
-redis = Redis(host=os.getenv("REDIS_URL","localhost"),
-port=os.getenv("REDIS_PORT","6379"), db=0, password=os.getenv("REDIS_PWD",""))
 
 app = Flask(__name__)
 
+# Home route
 @app.route("/")
-def hello():
-    try:
-        visits = redis.incr("counter")
-    except RedisError:
-        visits = "<i>cannot connect to Redis, counter disabled</i>"
-
-    html = """<h3>Hello from {name}!</h3>
-              <b>Hostname:</b> {hostname}<br/>
-              <b>Visits:</b> {visits}"""
-    return html.format(name=os.getenv("CREATOR"), hostname=socket.gethostname(),
-visits=visits)
+def home():
+    return "Hello, World! Welcome to your Dockerized Flask app!"
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    # Run the app on host 0.0.0.0 to make it accessible outside the container
+    app.run(host="0.0.0.0", port=5000)

@@ -5,8 +5,8 @@ name_prefix = "finalProject"
 
 #Docker
 dockerfile_path           = "Dockerfile"
-docker_build_context_path = "https://github.com/Megha0404/infrastructureProject.git#main:infrastructureProject/application"
-docker_image_name         = "cmtr-2olzzm40-mod8-app"
+docker_build_context_path = "https://github.com/Megha0404/infrastructureProject#main:infrastructure/application"
+docker_image_name         = "image"
 
 
 
